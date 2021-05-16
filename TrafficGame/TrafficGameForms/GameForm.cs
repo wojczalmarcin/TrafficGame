@@ -19,8 +19,6 @@ namespace TrafficGameForms
         public GameForm()
         {
             InitializeComponent();
-            // Initialize Paint Event
-            Paint += GameForm_Paint;
             // Initialize graphicsTimer
             graphicsTimer = new Timer();
             graphicsTimer.Interval = 1000 / frameRate;
