@@ -23,9 +23,9 @@ namespace TrafficGameCore.CarModel
         {
             var playerCarSpeed = gameSpeed * gameTimeElapsed;
             if (car.Speed / 10 >= playerCarSpeed)
-                car.PosY += playerCarSpeed + 2 * (int)car.DrivingDirection;
+                car.Pos.Y += playerCarSpeed + 2 * (int)car.DrivingDirection;
             else
-                car.PosY += playerCarSpeed + car.Speed / 10 * (int)car.DrivingDirection;
+                car.Pos.Y += playerCarSpeed + car.Speed / 10 * (int)car.DrivingDirection;
             changeSpeed(car);
         }
         /// <summary>
@@ -36,14 +36,14 @@ namespace TrafficGameCore.CarModel
         {
             foreach(var carInList in _carList)
             {
-                if(car.PosX <= (int)Lane.Third)
+                if(car.Pos.X <= (int)Lane.Third)
                 {
-                    if (carInList.PosX == car.PosX && car.PosY > carInList.PosY - (car.HitBoxLenght * 2))
+                    if (carInList.Pos.X == car.Pos.X && car.Pos.Y > carInList.Pos.Y - (car.HitBoxLenght * 2))
                         car.Speed = carInList.Speed;
                 }
                 else
                 {
-                    if (carInList.PosX == car.PosX && car.PosY < carInList.PosY+carInList.HitBoxLenght + (car.HitBoxLenght))
+                    if (carInList.Pos.X == car.Pos.X && car.Pos.Y < carInList.Pos.Y+carInList.HitBoxLenght + (car.HitBoxLenght))
                         car.Speed = carInList.Speed;
                 }
                 

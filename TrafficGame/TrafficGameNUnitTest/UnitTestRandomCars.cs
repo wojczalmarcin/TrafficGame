@@ -32,8 +32,8 @@ namespace TrafficGameNUnitTest
         public void WhichLanesAreFree_HowManyLanesAreFreeWithOneCar(int x, int y)
         {
             _randomCars.RandomCarsList.Add(new Car());
-            _randomCars.RandomCarsList[0].PosX = x;
-            _randomCars.RandomCarsList[0].PosY = y;
+            _randomCars.RandomCarsList[0].Pos.X = x;
+            _randomCars.RandomCarsList[0].Pos.Y = y;
             var freeLanes = StreetSingleton.GetInstance().WhichLanesAreFree(_randomCars.RandomCarsList);
 
             Assert.AreEqual(5, freeLanes.Count);
@@ -52,12 +52,12 @@ namespace TrafficGameNUnitTest
             _randomCars.RandomCarsList.Add(new Car());
             _randomCars.RandomCarsList.Add(new Car());
             _randomCars.RandomCarsList.Add(new Car());
-            _randomCars.RandomCarsList[0].PosX = x1;
-            _randomCars.RandomCarsList[0].PosY = y1;
-            _randomCars.RandomCarsList[1].PosX = x2;
-            _randomCars.RandomCarsList[1].PosY = y2;
-            _randomCars.RandomCarsList[2].PosX = x3;
-            _randomCars.RandomCarsList[2].PosY = y3;
+            _randomCars.RandomCarsList[0].Pos.X = x1;
+            _randomCars.RandomCarsList[0].Pos.Y = y1;
+            _randomCars.RandomCarsList[1].Pos.X = x2;
+            _randomCars.RandomCarsList[1].Pos.Y = y2;
+            _randomCars.RandomCarsList[2].Pos.X = x3;
+            _randomCars.RandomCarsList[2].Pos.Y = y3;
             var freeLanes = StreetSingleton.GetInstance().WhichLanesAreFree(_randomCars.RandomCarsList);
 
             Assert.AreEqual(3, freeLanes.Count);
@@ -76,16 +76,16 @@ namespace TrafficGameNUnitTest
             _randomCars.RandomCarsList.Add(new Car());
             _randomCars.RandomCarsList.Add(new Car());
             _randomCars.RandomCarsList.Add(new Car());
-            _randomCars.RandomCarsList[0].PosX = x1;
-            _randomCars.RandomCarsList[0].PosY = 0;
-            _randomCars.RandomCarsList[1].PosX = x2;
-            _randomCars.RandomCarsList[1].PosY = 0;
-            _randomCars.RandomCarsList[2].PosX = x3;
-            _randomCars.RandomCarsList[2].PosY = 0;
-            _randomCars.RandomCarsList[3].PosX = x4;
-            _randomCars.RandomCarsList[3].PosY = 0;
-            _randomCars.RandomCarsList[4].PosX = x5;
-            _randomCars.RandomCarsList[4].PosY = 0;
+            _randomCars.RandomCarsList[0].Pos.X = x1;
+            _randomCars.RandomCarsList[0].Pos.Y = 0;
+            _randomCars.RandomCarsList[1].Pos.X = x2;
+            _randomCars.RandomCarsList[1].Pos.Y = 0;
+            _randomCars.RandomCarsList[2].Pos.X = x3;
+            _randomCars.RandomCarsList[2].Pos.Y = 0;
+            _randomCars.RandomCarsList[3].Pos.X = x4;
+            _randomCars.RandomCarsList[3].Pos.Y = 0;
+            _randomCars.RandomCarsList[4].Pos.X = x5;
+            _randomCars.RandomCarsList[4].Pos.Y = 0;
             var freeLanes = StreetSingleton.GetInstance().WhichLanesAreFree(_randomCars.RandomCarsList);
 
             Assert.AreEqual(0, freeLanes.Count);
@@ -103,16 +103,16 @@ namespace TrafficGameNUnitTest
             _randomCars.RandomCarsList.Add(new Car());
             _randomCars.RandomCarsList.Add(new Car());
             _randomCars.RandomCarsList.Add(new Car());
-            _randomCars.RandomCarsList[0].PosX = x1;
-            _randomCars.RandomCarsList[0].PosY = 350;
-            _randomCars.RandomCarsList[1].PosX = x2;
-            _randomCars.RandomCarsList[1].PosY = 0;
-            _randomCars.RandomCarsList[2].PosX = x3;
-            _randomCars.RandomCarsList[2].PosY = 0;
-            _randomCars.RandomCarsList[3].PosX = x4;
-            _randomCars.RandomCarsList[3].PosY = 0;
-            _randomCars.RandomCarsList[4].PosX = x5;
-            _randomCars.RandomCarsList[4].PosY = 0;
+            _randomCars.RandomCarsList[0].Pos.X = x1;
+            _randomCars.RandomCarsList[0].Pos.Y = 350;
+            _randomCars.RandomCarsList[1].Pos.X = x2;
+            _randomCars.RandomCarsList[1].Pos.Y = 0;
+            _randomCars.RandomCarsList[2].Pos.X = x3;
+            _randomCars.RandomCarsList[2].Pos.Y = 0;
+            _randomCars.RandomCarsList[3].Pos.X = x4;
+            _randomCars.RandomCarsList[3].Pos.Y = 0;
+            _randomCars.RandomCarsList[4].Pos.X = x5;
+            _randomCars.RandomCarsList[4].Pos.Y = 0;
             var freeLanes = StreetSingleton.GetInstance().WhichLanesAreFree(_randomCars.RandomCarsList);
 
             Assert.AreEqual(2, freeLanes.Count);

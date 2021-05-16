@@ -57,7 +57,7 @@ namespace TrafficGameCore.CarModel
             foreach (var car in RandomCarsList)
             {
                 carBot.DriveCar(car, gameSpeed, gameTimeElapsed);
-                if (car.PosY > StreetSingleton.GetInstance().Lenght)
+                if (car.Pos.Y > StreetSingleton.GetInstance().Lenght)
                     carsToRemove.Add(car);
             }
             foreach(var car in carsToRemove)

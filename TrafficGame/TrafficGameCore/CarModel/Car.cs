@@ -10,10 +10,8 @@ namespace TrafficGameCore.CarModel
     /// </summary>
     public class Car
     {
-        // X position
-        public double PosX { get; set; }
-        // Y position
-        public double PosY { get; set; }
+        // Position
+        public (double X, double Y) Pos;
         // Speed ratio
         public int Speed { get; set; }
         // Image from sprite sheet
@@ -56,7 +54,7 @@ namespace TrafficGameCore.CarModel
         public void Draw(Graphics g)
         {
             var image = RotateImage(CarModel, Angle);
-            g.DrawImage(image, new RectangleF((int)PosX, (int)PosY, image.Width, image.Height));
+            g.DrawImage(image, new RectangleF((int)Pos.X, (int)Pos.Y, image.Width, image.Height));
         }
 
         /// <summary>

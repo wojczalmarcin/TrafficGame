@@ -40,9 +40,9 @@ namespace TrafficGameCore.CarModel
             {
                 randomPos = random.Next(freeLanes.Count);
                 Car newCar = carsFactory.CreateRandomCar();
-                newCar.PosX = (int)freeLanes[randomPos];
-                newCar.PosY = -newCar.HitBoxLenght;
-                if(newCar.PosX == (int)Lane.First || newCar.PosX == (int)Lane.Second || newCar.PosX == (int)Lane.Third)
+                newCar.Pos.X = (int)freeLanes[randomPos];
+                newCar.Pos.Y = -newCar.HitBoxLenght;
+                if(newCar.Pos.X == (int)Lane.First || newCar.Pos.X == (int)Lane.Second || newCar.Pos.X == (int)Lane.Third)
                 {
                     newCar.DrivingDirection = Car.Direction.Bottom;
                     newCar.Angle = 180;

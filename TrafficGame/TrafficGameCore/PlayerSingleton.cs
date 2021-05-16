@@ -30,8 +30,8 @@ namespace TrafficGameCore
         {
             carsFactory = new CarsFactory(Properties.Resources.cars);
             PlayersCar = carsFactory.CreateBlackFast();
-            PlayersCar.PosX = 300;
-            PlayersCar.PosY = 550;
+            PlayersCar.Pos.X = 300;
+            PlayersCar.Pos.Y = 550;
         }
 
         /// <summary>
@@ -102,30 +102,30 @@ namespace TrafficGameCore
         {
             var speed = PlayersCar.Speed * gameTimeElapsed;
             var turnSPeed = PlayersCar.TurningRate * gameTimeElapsed;
-            if ((keyA || keyLeft) && PlayersCar.PosX > StreetSingleton.GetInstance().SidewalkWidth)
+            if ((keyA || keyLeft) && PlayersCar.Pos.X > StreetSingleton.GetInstance().SidewalkWidth)
             {
-                PlayersCar.PosX -= turnSPeed;
+                PlayersCar.Pos.X -= turnSPeed;
                 PlayersCar.Angle = -5;
             }
             else
             {
                 PlayersCar.Angle = 0;
             }
-            if ((keyD || keyRight) && PlayersCar.PosX < StreetSingleton.GetInstance().Width - StreetSingleton.GetInstance().SidewalkWidth - PlayersCar.HitBoxWidth)
+            if ((keyD || keyRight) && PlayersCar.Pos.X < StreetSingleton.GetInstance().Width - StreetSingleton.GetInstance().SidewalkWidth - PlayersCar.HitBoxWidth)
             {
-                PlayersCar.PosX += turnSPeed;
+                PlayersCar.Pos.X += turnSPeed;
                 PlayersCar.Angle = 5;
             }
-            if ((keyW || keyUp) && PlayersCar.PosY > 0)
+            if ((keyW || keyUp) && PlayersCar.Pos.Y > 0)
             {
-                PlayersCar.PosY -= speed;
+                PlayersCar.Pos.Y -= speed;
             }
-            if ((keyS || keyDown) && PlayersCar.PosY < StreetSingleton.GetInstance().Lenght - PlayersCar.HitBoxLenght)
+            if ((keyS || keyDown) && PlayersCar.Pos.Y < StreetSingleton.GetInstance().Lenght - PlayersCar.HitBoxLenght)
             {
                 if(speed>gameSpeed)
-                    PlayersCar.PosY += (gameSpeed - 1);
+                    PlayersCar.Pos.Y += (gameSpeed - 1);
                 else
-                    PlayersCar.PosY += PlayersCar.Speed* gameTimeElapsed;
+                    PlayersCar.Pos.Y += PlayersCar.Speed* gameTimeElapsed;
             }
 
             if ((keyD || keyRight) && (keyA || keyLeft))
