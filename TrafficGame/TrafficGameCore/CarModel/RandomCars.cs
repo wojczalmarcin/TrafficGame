@@ -18,6 +18,8 @@ namespace TrafficGameCore.CarModel
         public int numbersOfCars { get; set; }
         // RandomCarSpawner instance
         private RandomCarSpawner randomCarSpawner;
+        // CarBot instance
+        private CarBot carBot;
 
         /// <summary>
         /// Constructor
@@ -27,6 +29,7 @@ namespace TrafficGameCore.CarModel
             numbersOfCars = 0;
             RandomCarsList = new List<Car>();
             randomCarSpawner = new RandomCarSpawner(spriteSheet);
+            carBot = new CarBot(RandomCarsList);
         }
 
 
@@ -53,7 +56,7 @@ namespace TrafficGameCore.CarModel
                 randomCarSpawner.SpawnRandomCar(RandomCarsList);
             foreach (var car in RandomCarsList)
             {
-                car.DriveStraight(gameSpeed, gameTimeElapsed);
+                carBot.DriveCar(car, gameSpeed, gameTimeElapsed);
                 if (car.PosY > StreetSingleton.GetInstance().Lenght)
                     carsToRemove.Add(car);
             }

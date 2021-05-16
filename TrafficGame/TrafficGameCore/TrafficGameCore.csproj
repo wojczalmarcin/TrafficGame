@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CarModel\Car.cs" />
+    <Compile Include="CarModel\CarBot.cs" />
     <Compile Include="CarModel\CarsFactory.cs" />
     <Compile Include="CarModel\RandomCars.cs" />
     <Compile Include="CarModel\RandomCarSpawner.cs" />

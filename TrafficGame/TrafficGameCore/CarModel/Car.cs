@@ -15,7 +15,7 @@ namespace TrafficGameCore.CarModel
         // Y position
         public double PosY { get; set; }
         // Speed ratio
-        public int Speed { get; }
+        public int Speed { get; set; }
         // Image from sprite sheet
         private Image CarModel;
         // Turning rate
@@ -49,17 +49,6 @@ namespace TrafficGameCore.CarModel
         {
         }
 
-        /// <summary>
-        /// Method causing car to drive straight
-        /// </summary>
-        public void DriveStraight(double gameSpeed, double gameTimeElapsed)
-        {
-            var playerCarSpeed = gameSpeed * gameTimeElapsed;
-            if(Speed/10>=playerCarSpeed)
-                PosY += playerCarSpeed + 2 * (int)DrivingDirection;
-            else
-                PosY += playerCarSpeed + Speed/10 * (int)DrivingDirection;
-        }
         /// <summary>
         /// Car drawing method
         /// </summary>
