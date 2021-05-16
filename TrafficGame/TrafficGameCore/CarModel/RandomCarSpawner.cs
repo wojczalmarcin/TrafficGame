@@ -41,7 +41,7 @@ namespace TrafficGameCore.CarModel
                 randomPos = random.Next(freeLanes.Count);
                 Car newCar = carsFactory.CreateRandomCar();
                 newCar.PosX = (int)freeLanes[randomPos];
-
+                newCar.PosY = -newCar.HitBoxLenght;
                 if(newCar.PosX == (int)Lane.First || newCar.PosX == (int)Lane.Second)
                 {
                     newCar.DrivingDirection = Car.Direction.Bottom;
@@ -57,7 +57,5 @@ namespace TrafficGameCore.CarModel
             }
 
         }
-
-       
     }
 }

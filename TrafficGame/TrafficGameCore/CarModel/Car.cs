@@ -54,7 +54,11 @@ namespace TrafficGameCore.CarModel
         /// </summary>
         public void DriveStraight(double gameSpeed, double gameTimeElapsed)
         {
-            PosY += gameSpeed + 2 * (int)DrivingDirection*gameTimeElapsed;
+            var playerCarSpeed = gameSpeed * gameTimeElapsed;
+            if(Speed/10>=playerCarSpeed)
+                PosY += playerCarSpeed + 2 * (int)DrivingDirection;
+            else
+                PosY += playerCarSpeed + Speed/10 * (int)DrivingDirection;
         }
         /// <summary>
         /// Car drawing method

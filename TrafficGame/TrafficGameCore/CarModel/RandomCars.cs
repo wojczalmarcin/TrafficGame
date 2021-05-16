@@ -14,15 +14,22 @@ namespace TrafficGameCore.CarModel
         public List<Car> RandomCarsList { get; set; }
         // Random generator
         private Random random = new Random();
+        // Number of cars
+        public int numbersOfCars { get; set; }
+        // RandomCarSpawner instance
+        private RandomCarSpawner randomCarSpawner;
 
         /// <summary>
         /// Constructor
         /// </summary>
-        public RandomCars()
+        public RandomCars(Image spriteSheet)
         {
+            numbersOfCars = 0;
             RandomCarsList = new List<Car>();
+            randomCarSpawner = new RandomCarSpawner(spriteSheet);
         }
-        
+
+
         /// <summary>
         /// Method drawing random cars
         /// </summary>
@@ -39,12 +46,20 @@ namespace TrafficGameCore.CarModel
         /// Method moving random cars
         /// </summary>
         /// <param name="gameSpeed"></param>
-        public async void MoveRandomCarsAsync(double gameSpeed, double gameTimeElapsed)
+        public void MoveRandomCars(double gameSpeed, double gameTimeElapsed)
         {
+            var carsToRemove = new List<Car>();
+            if (RandomCarsList.Count != numbersOfCars)
+                randomCarSpawner.SpawnRandomCar(RandomCarsList);
             foreach (var car in RandomCarsList)
             {
-                // todo:
-                // make street lenght dependency
+                car.DriveStraight(gameSpeed, gameTimeElapsed);
+                if (car.PosY > StreetSingleton.GetInstance().Lenght)
+                    carsToRemove.Add(car);
+            }
+            foreach(var car in carsToRemove)
+            {
+                RandomCarsList.Remove(car);
             }
         }
 

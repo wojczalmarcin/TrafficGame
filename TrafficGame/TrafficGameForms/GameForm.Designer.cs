@@ -46,7 +46,7 @@ namespace TrafficGameForms
             // GameForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(694, 753);
+            this.ClientSize = new System.Drawing.Size(700, 753);
             this.Controls.Add(this.pictureBoxGraphics);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

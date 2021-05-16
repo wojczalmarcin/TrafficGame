@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using TrafficGameCore;
 using TrafficGameCore.CarModel;
+using System.Drawing;
 using static TrafficGameCore.StreetSingleton;
 
 namespace TrafficGameNUnitTest
@@ -13,7 +14,7 @@ namespace TrafficGameNUnitTest
         [SetUp]
         public void Setup()
         {
-            _randomCars = new RandomCars();
+            _randomCars = new RandomCars(new Bitmap(700, 1024));
         }
 
         [TestCase(Lane.First, 0)]

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TrafficGameCore.CarModel;
 
 namespace TrafficGameCore
 {
@@ -19,6 +20,10 @@ namespace TrafficGameCore
         private static double maxGameSpeed = 300;
         // Gameloop status
         public bool Running { get; private set; }
+        // Random cars
+        private RandomCars randomCars;
+        // Sprite sheet
+        Image spriteSheet;
 
         // Gameloop start method
         public async Task Start()
@@ -57,9 +62,12 @@ namespace TrafficGameCore
         private void Tick(double gameTimeElapsed)
         {
             if(gameSpeed<maxGameSpeed)
-                gameSpeed += 0.01;
+                gameSpeed += 1;
+            if(gameSpeed%50 == 25)
+                randomCars.numbersOfCars +=1;
             StreetSingleton.GetInstance().Tick(gameSpeed, gameTimeElapsed);
             PlayerSingleton.GetInstance().Tick(gameTimeElapsed, gameSpeed * gameTimeElapsed);
+            randomCars.MoveRandomCars(gameSpeed, gameTimeElapsed);
         }
 
         /// <summary>
@@ -70,13 +78,18 @@ namespace TrafficGameCore
         {
             StreetSingleton.GetInstance().Draw(g);
             PlayerSingleton.GetInstance().PlayersCar.Draw(g);
+            randomCars.Draw(g);
         }
 
         /// <summary>
-        /// Load images
+        /// Load images etc.
         /// </summary>
         public void Load()
         {
+            spriteSheet = Properties.Resources.cars;
+            randomCars = new RandomCars(spriteSheet);
+            randomCars.RandomCarsList.Clear();
+            randomCars.numbersOfCars = 1;
             StreetSingleton.GetInstance().StreetImage = Properties.Resources.street;
         }
 

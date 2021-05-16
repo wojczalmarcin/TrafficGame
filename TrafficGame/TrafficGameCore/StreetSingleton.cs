@@ -83,7 +83,7 @@ namespace TrafficGameCore
 
             foreach (var car in carList)
             {
-                if (car.PosY >= 0 && car.PosY <= car.HitBoxLenght)
+                if (car.PosY <= car.HitBoxLenght)
                     freeLanes.Remove((Lane)car.PosX);
             }
 
@@ -94,7 +94,7 @@ namespace TrafficGameCore
                 {
                     Parallel.ForEach(carList, car =>
                     {
-                        if (car.PosY >= 0 && car.PosY <= car.HitBoxLenght * 2 + 50)
+                        if (car.PosY <= car.HitBoxLenght * 2 + 50)
                         {
                             if (freeLanes.Count == 2)
                             {
