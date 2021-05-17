@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TrafficGameCore;
 
@@ -38,6 +31,7 @@ namespace TrafficGameForms
         private void GraphicsTimer_Tick(object sender, EventArgs e)
         {
             pictureBoxGraphics.Refresh();
+            labelDebugger.Text = "Threads:\n" + gameLoop.threads;
         }
         private void GameForm_KeyDown(object sender, KeyEventArgs e)
         {

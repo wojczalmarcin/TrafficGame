@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Windows.Forms;
 
 namespace TrafficGameCore.CarModel
 {
     /// <summary>
     /// Car class
     /// </summary>
-    public class Car
+    internal class Car
     {
         // Position
         public (double X, double Y) Pos;
@@ -22,10 +21,9 @@ namespace TrafficGameCore.CarModel
         public float Angle { get; set; } = 0;
         // Driving direction
         public Direction DrivingDirection { get; set; }
-        // Hitbox lenght
-        public float HitBoxLenght { get; set; } = 145;
-        // Hitbox width
-        public float HitBoxWidth { get; set; } = 70;
+
+        // Hitbox
+        public (int Width, int Lenght) HitBox { get; set; }
 
         /// <summary>
         /// Constructor
@@ -33,11 +31,12 @@ namespace TrafficGameCore.CarModel
         /// <param name="speed"></param>
         /// <param name="carModel"></param>
         /// <param name="turningRate"></param>
-        public Car(int speed, int turningRate, Image carModel)
+        public Car(int speed, int turningRate, (int width,int lenght) hitBox,Image carModel)
         {
             Speed = speed;
             TurningRate = turningRate;
             CarModel = carModel;
+            HitBox = hitBox;
         }
 
         /// <summary>
@@ -45,6 +44,7 @@ namespace TrafficGameCore.CarModel
         /// </summary>
         public Car()
         {
+            HitBox = (50, 140);
         }
 
         /// <summary>

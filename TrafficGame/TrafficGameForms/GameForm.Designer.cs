@@ -30,6 +30,7 @@ namespace TrafficGameForms
         private void InitializeComponent()
         {
             this.pictureBoxGraphics = new System.Windows.Forms.PictureBox();
+            this.labelDebugger = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGraphics)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,10 +44,19 @@ namespace TrafficGameForms
             this.pictureBoxGraphics.TabStop = false;
             this.pictureBoxGraphics.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBoxGraphics_Paint);
             // 
+            // labelDebugger
+            // 
+            this.labelDebugger.Location = new System.Drawing.Point(12, 9);
+            this.labelDebugger.Name = "labelDebugger";
+            this.labelDebugger.Size = new System.Drawing.Size(100, 64);
+            this.labelDebugger.TabIndex = 1;
+            this.labelDebugger.Text = "debug";
+            // 
             // GameForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(700, 753);
+            this.Controls.Add(this.labelDebugger);
             this.Controls.Add(this.pictureBoxGraphics);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -63,6 +73,7 @@ namespace TrafficGameForms
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxGraphics;
+        private System.Windows.Forms.Label labelDebugger;
     }
 }
 

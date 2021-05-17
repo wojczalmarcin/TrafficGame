@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
+
+[assembly: InternalsVisibleToAttribute("TrafficGameNUnitTest")]
 
 namespace TrafficGameCore.CarModel
 {
     /// <summary>
     /// Class representing random cars on the street
     /// </summary>
-    public class RandomCars
+    internal class RandomCars
     {
         // List of random cars
-        public List<Car> RandomCarsList { get; set; }
+        internal List<Car> RandomCarsList { get; set; }
         // Random generator
         private Random random = new Random();
         // Number of cars

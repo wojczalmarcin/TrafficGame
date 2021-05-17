@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TrafficGameCore.CarModel;
 
+
 namespace TrafficGameCore
 {
     /// <summary>
@@ -61,19 +62,19 @@ namespace TrafficGameCore
         /// </summary>
         public enum Lane
         {
-            First = 70,
+            First = 75,
             Second = 170,
             Third = 270,
             Fourth = 370,
-            Fifth = 470,
-            Sixth = 570
+            Fifth = 460,
+            Sixth = 560
         }
         /// <summary>
         /// Method that returns lanes on which car can be spawned
         /// </summary>
         /// <param name="carIndex"></param>
         /// <returns></returns>
-        public List<Lane> WhichLanesAreFree(List<Car> carList)
+        internal List<Lane> WhichLanesAreFree(List<Car> carList)
         {
             var freeLanes = new List<Lane>();
             foreach (Lane lane in (Lane[])Enum.GetValues(typeof(Lane)))
@@ -83,18 +84,19 @@ namespace TrafficGameCore
 
             foreach (var car in carList)
             {
-                if (car.Pos.Y <= car.HitBoxLenght)
+                if (car.Pos.Y >= 0 && car.Pos.Y <= car.HitBox.Lenght)
                     freeLanes.Remove((Lane)car.Pos.X);
             }
 
-            if (carsCount >= 5) {
+            if (carsCount >= 5)
+            {
                 if (freeLanes.Count == 1)
                     freeLanes.Clear();
                 else if (freeLanes.Count == 2)
                 {
                     Parallel.ForEach(carList, car =>
                     {
-                        if (car.Pos.Y <= car.HitBoxLenght * 2 + 50)
+                        if (car.Pos.Y >= 0 && car.Pos.Y <= car.HitBox.Lenght * 2 + 50)
                         {
                             if (freeLanes.Count == 2)
                             {

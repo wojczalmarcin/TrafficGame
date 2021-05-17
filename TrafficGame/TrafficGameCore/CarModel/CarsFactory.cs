@@ -6,7 +6,7 @@ namespace TrafficGameCore.CarModel
     /// <summary>
     /// Cars factory calss, creates various cars
     /// </summary>
-    public class CarsFactory
+    internal class CarsFactory
     {
         // Instance of carsImages which is resposible of creating cutting cars from sprite sheet
         private CarsImages carsImages;
@@ -23,24 +23,24 @@ namespace TrafficGameCore.CarModel
         {
             carsImages = new CarsImages(spriteSheet);
         }
-        public Car CreateWhiteSlow() { return new Car(3* statisticsMultiplier, 6* statisticsMultiplier, carsImages.CarsImagesArray[0]); }
-        public Car CreateWhiteMedium() { return new Car(4* statisticsMultiplier, 8* statisticsMultiplier, carsImages.CarsImagesArray[1]); }
-        public Car CreateWhiteFast() { return new Car(5* statisticsMultiplier, 8* statisticsMultiplier, carsImages.CarsImagesArray[3]); }
-        public Car CreateWhitePickUp() { return new Car(3* statisticsMultiplier, 6* statisticsMultiplier, carsImages.CarsImagesArray[5]); }
-        public Car CreateYellowTaxi() { return new Car(4* statisticsMultiplier, 8* statisticsMultiplier, carsImages.CarsImagesArray[2]); }
-        public Car CreateWhiteTaxi() { return new Car(4* statisticsMultiplier, 8* statisticsMultiplier, carsImages.CarsImagesArray[4]); }
-        public Car CreateBlackFast() { return new Car(6* statisticsMultiplier, 9* statisticsMultiplier, carsImages.CarsImagesArray[6]); }
-        public Car CreateRedPickUp() { return new Car(3* statisticsMultiplier, 7* statisticsMultiplier, carsImages.CarsImagesArray[7]); }
-        public Car CreateAmbulance() { return new Car(5* statisticsMultiplier, 7* statisticsMultiplier, carsImages.CarsImagesArray[8]); }
-        public Car CreatePoliceCarBlue() { return new Car(4* statisticsMultiplier, 7* statisticsMultiplier, carsImages.CarsImagesArray[9]); }
-        public Car CreatePoliceCarBlack() { return new Car(5* statisticsMultiplier, 7* statisticsMultiplier, carsImages.CarsImagesArray[10]); }
-        public Car CreatePoliceCarSecret() { return new Car(6* statisticsMultiplier, 9* statisticsMultiplier, carsImages.CarsImagesArray[11]); }
+        internal Car CreateWhiteSlow() { return new Car(3* statisticsMultiplier, 8* statisticsMultiplier,(52,118), carsImages.CarsImagesArray[0]); }
+        internal Car CreateWhiteMedium() { return new Car(4* statisticsMultiplier, 10* statisticsMultiplier, (52, 132), carsImages.CarsImagesArray[1]); }
+        internal Car CreateWhiteFast() { return new Car(5* statisticsMultiplier, 10* statisticsMultiplier, (56, 134), carsImages.CarsImagesArray[3]); }
+        internal Car CreateWhitePickUp() { return new Car(3* statisticsMultiplier, 8* statisticsMultiplier, (60, 138), carsImages.CarsImagesArray[5]); }
+        internal Car CreateYellowTaxi() { return new Car(4* statisticsMultiplier, 10* statisticsMultiplier, (52, 118), carsImages.CarsImagesArray[2]); }
+        internal Car CreateWhiteTaxi() { return new Car(4* statisticsMultiplier, 10* statisticsMultiplier, (56, 132), carsImages.CarsImagesArray[4]); }
+        internal Car CreateBlackFast() { return new Car(6* statisticsMultiplier, 11* statisticsMultiplier, (56, 130), carsImages.CarsImagesArray[6]); }
+        internal Car CreateRedPickUp() { return new Car(3* statisticsMultiplier, 9* statisticsMultiplier, (54, 138), carsImages.CarsImagesArray[7]); }
+        internal Car CreateAmbulance() { return new Car(5* statisticsMultiplier, 9* statisticsMultiplier, (56, 142), carsImages.CarsImagesArray[8]); }
+        internal Car CreatePoliceCarBlue() { return new Car(4* statisticsMultiplier, 9* statisticsMultiplier, (54, 128), carsImages.CarsImagesArray[9]); }
+        internal Car CreatePoliceCarBlack() { return new Car(5* statisticsMultiplier, 9* statisticsMultiplier, (54, 128), carsImages.CarsImagesArray[10]); }
+        internal Car CreatePoliceCarSecret() { return new Car(6* statisticsMultiplier, 11* statisticsMultiplier, (58, 128), carsImages.CarsImagesArray[11]); }
 
         /// <summary>
         /// Method creating random car
         /// </summary>
         /// <returns></returns>
-        public Car CreateRandomCar() 
+        internal Car CreateRandomCar(Random random) 
         {
 
             switch (random.Next(12))

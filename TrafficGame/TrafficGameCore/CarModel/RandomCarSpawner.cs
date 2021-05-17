@@ -11,7 +11,7 @@ namespace TrafficGameCore.CarModel
     /// <summary>
     /// Class which is resposible of putting random car on the street
     /// </summary>
-    public class RandomCarSpawner
+    internal class RandomCarSpawner
     {
         // Cars factory
         private CarsFactory carsFactory;
@@ -30,7 +30,7 @@ namespace TrafficGameCore.CarModel
         /// Method spawning cars on the specific lane
         /// </summary>
         /// <param name="carList"></param>
-        public void SpawnRandomCar(List<Car> carList)
+        internal void SpawnRandomCar(List<Car> carList)
         {
             
             var freeLanes = StreetSingleton.GetInstance().WhichLanesAreFree(carList);
@@ -39,9 +39,9 @@ namespace TrafficGameCore.CarModel
             if (freeLanes.Count != 0)
             {
                 randomPos = random.Next(freeLanes.Count);
-                Car newCar = carsFactory.CreateRandomCar();
+                Car newCar = carsFactory.CreateRandomCar(random);
                 newCar.Pos.X = (int)freeLanes[randomPos];
-                newCar.Pos.Y = -newCar.HitBoxLenght;
+                newCar.Pos.Y = -newCar.HitBox.Lenght;
                 if(newCar.Pos.X == (int)Lane.First || newCar.Pos.X == (int)Lane.Second || newCar.Pos.X == (int)Lane.Third)
                 {
                     newCar.DrivingDirection = Car.Direction.Bottom;

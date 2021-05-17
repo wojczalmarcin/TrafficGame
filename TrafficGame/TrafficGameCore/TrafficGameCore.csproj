@@ -52,10 +52,13 @@
     <Compile Include="CarModel\Car.cs" />
     <Compile Include="CarModel\CarBot.cs" />
     <Compile Include="CarModel\CarsFactory.cs" />
+    <Compile Include="HitBox\CarHitbox.cs" />
+    <Compile Include="HitBox\Hitbox.cs" />
     <Compile Include="CarModel\RandomCars.cs" />
     <Compile Include="CarModel\RandomCarSpawner.cs" />
     <Compile Include="CarsImages.cs" />
     <Compile Include="GameLoop.cs" />
+    <Compile Include="HitBox\Rectangle.cs" />
     <Compile Include="PlayerSingleton.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StreetSingleton.cs" />
