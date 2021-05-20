@@ -47,6 +47,7 @@ namespace TrafficGameNUnitTest
         [TestCase((int)Lane.First, 0, (int)Lane.Second, 0, (int)Lane.Third, 0)]
         [TestCase((int)Lane.First, 0, (int)Lane.Second, 0, (int)Lane.Fourth, 0)]
         [TestCase((int)Lane.Second, 0, (int)Lane.Third, 0, (int)Lane.First, 0)]
+        [TestCase((int)Lane.Second, -100, (int)Lane.Third, -50, (int)Lane.First, 0)]
         public void WhichLanesAreFree_HowManyLanesAreFreeWithThreeCars(int x1, int y1, int x2, int y2, int x3, int y3)
         {
             _randomCars.RandomCarsList.Add(new Car());

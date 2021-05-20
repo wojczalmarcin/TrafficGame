@@ -9,6 +9,7 @@ namespace TrafficGameForms
         Timer graphicsTimer;
         GameLoop gameLoop;
         int frameRate = 120;
+        bool gameFinished=false;
         public GameForm()
         {
             InitializeComponent();
@@ -31,7 +32,15 @@ namespace TrafficGameForms
         private void GraphicsTimer_Tick(object sender, EventArgs e)
         {
             pictureBoxGraphics.Refresh();
-            labelDebugger.Text = "Threads:\n" + gameLoop.threads;
+            labelDebugger.Text = "Threads:\n" + gameLoop.threads +"\nGameSpeed:\n"+ (int)gameLoop.gameSpeed
+                + "\nCarsNumber:\n" + gameLoop.NumberOfCars;
+            if (!gameLoop.Running)
+            {
+                gameFinished = true;
+                graphicsTimer.Stop();
+                MessageBox.Show("Przegrałeś!");
+            }
+                
         }
         private void GameForm_KeyDown(object sender, KeyEventArgs e)
         {

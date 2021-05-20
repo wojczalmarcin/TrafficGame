@@ -111,7 +111,7 @@ namespace TrafficGameCore
             {
                 PlayersCar.Angle = 0;
             }
-            if ((keyD || keyRight) && PlayersCar.Pos.X < StreetSingleton.GetInstance().Width - StreetSingleton.GetInstance().SidewalkWidth - PlayersCar.HitBox.Width)
+            if ((keyD || keyRight) && PlayersCar.Pos.X < StreetSingleton.GetInstance().Width - StreetSingleton.GetInstance().SidewalkWidth - PlayersCar.HitBox.Size.Width)
             {
                 PlayersCar.Pos.X += turnSPeed;
                 PlayersCar.Angle = 5;
@@ -120,7 +120,7 @@ namespace TrafficGameCore
             {
                 PlayersCar.Pos.Y -= speed;
             }
-            if ((keyS || keyDown) && PlayersCar.Pos.Y < StreetSingleton.GetInstance().Lenght - PlayersCar.HitBox.Lenght)
+            if ((keyS || keyDown) && PlayersCar.Pos.Y < StreetSingleton.GetInstance().Lenght - PlayersCar.HitBox.Size.Lenght)
             {
                 if(speed>gameSpeed)
                     PlayersCar.Pos.Y += (gameSpeed - 1);

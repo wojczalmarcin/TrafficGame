@@ -23,26 +23,26 @@ namespace TrafficGameCore.CarModel
         {
             var playerCarSpeed = gameSpeed * gameTimeElapsed;
             if (car.Speed / 2 >= playerCarSpeed)
-                car.Speed = car.Speed/2;
+                car.Speed /= 2;
             car.Pos.Y += playerCarSpeed + car.Speed / 2 * (int)car.DrivingDirection;
-            changeSpeed(car);
+            ChangeSpeed(car);
         }
         /// <summary>
         /// Method checking if there is car in front of input car so that it can slow down
         /// </summary>
         /// <param name="car"></param>
-        private void changeSpeed(Car car)
+        private void ChangeSpeed(Car car)
         {
             foreach(var carInList in _carList)
             {
                 if(car.Pos.X <= (int)Lane.Third)
                 {
-                    if (carInList.Pos.X == car.Pos.X && car.Pos.Y > carInList.Pos.Y - (car.HitBox.Lenght * 2))
+                    if (carInList.Pos.X == car.Pos.X && car.Pos.Y > carInList.Pos.Y - (car.HitBox.Size.Lenght * 2))
                         car.Speed = carInList.Speed;
                 }
                 else
                 {
-                    if (carInList.Pos.X == car.Pos.X && car.Pos.Y < carInList.Pos.Y+carInList.HitBox.Lenght + (car.HitBox.Lenght))
+                    if (carInList.Pos.X == car.Pos.X && car.Pos.Y < carInList.Pos.Y+carInList.HitBox.Size.Lenght + (car.HitBox.Size.Lenght))
                         car.Speed = carInList.Speed;
                 }
                 

@@ -9,19 +9,23 @@ namespace TrafficGameCore.HitBox
     /// <summary>
     /// 
     /// </summary>
-    internal abstract class Hitbox
+    public abstract class Hitbox
     {
         // List of rectangles in hitbox
-        public List<Rectangle> Rectangles;
+        public List<HitboxRectangle> Rectangles;
         // Position of the hitbox
-        protected (int X, int Y) Pos;
+        protected Position Pos;
 
+        public Hitbox()
+        {
+            Rectangles = new List<HitboxRectangle>();
+        }
         /// <summary>
         /// Method checking if there is collision with another hitbox
         /// </summary>
         /// <param name="hitbox"></param>
         /// <returns></returns>
-        protected bool IsCollided(Hitbox hitbox)
+        public bool IsCollided(Hitbox hitbox)
         {
             foreach(var thisRec in Rectangles)
             {

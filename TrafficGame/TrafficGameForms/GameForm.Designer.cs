@@ -48,7 +48,7 @@ namespace TrafficGameForms
             // 
             this.labelDebugger.Location = new System.Drawing.Point(12, 9);
             this.labelDebugger.Name = "labelDebugger";
-            this.labelDebugger.Size = new System.Drawing.Size(100, 64);
+            this.labelDebugger.Size = new System.Drawing.Size(100, 179);
             this.labelDebugger.TabIndex = 1;
             this.labelDebugger.Text = "debug";
             // 

@@ -58,8 +58,9 @@
     <Compile Include="CarModel\RandomCarSpawner.cs" />
     <Compile Include="CarsImages.cs" />
     <Compile Include="GameLoop.cs" />
-    <Compile Include="HitBox\Rectangle.cs" />
+    <Compile Include="HitBox\HitboxRectangle.cs" />
     <Compile Include="PlayerSingleton.cs" />
+    <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StreetSingleton.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

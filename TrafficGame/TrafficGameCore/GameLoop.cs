@@ -15,10 +15,12 @@ namespace TrafficGameCore
     /// </summary>
     public class GameLoop
     {
+        // temp debug
+        public int NumberOfCars { get; set; } = 0;
         // Actual speed of car/game
-        private double gameSpeed = 100;
+        public double gameSpeed { get; set; } = 100;
         // Max speed of car/game
-        private static double maxGameSpeed = 402;
+        private static double maxGameSpeed = 602;
         // Gameloop status
         public bool Running { get; private set; }
         // Random cars
@@ -66,10 +68,10 @@ namespace TrafficGameCore
         private void Tick(double gameTimeElapsed)
         {
             if(gameSpeed<maxGameSpeed)
-                gameSpeed += 1;
-            if (gameSpeed % 50 == 25)
-                randomCars.numbersOfCars += 1;
-                
+                //this must be precised hex number
+                gameSpeed += 0.125;
+            CarSpawnInterval();
+
             StreetSingleton.GetInstance().Tick(gameSpeed, gameTimeElapsed);
             PlayerSingleton.GetInstance().Tick(gameTimeElapsed, gameSpeed * gameTimeElapsed);
             randomCars.MoveRandomCars(gameSpeed, gameTimeElapsed);
@@ -80,6 +82,37 @@ namespace TrafficGameCore
             //temp
             threads = Process.GetCurrentProcess().Threads.Count;
         }
+        private void CarSpawnInterval()
+        {
+            if (gameSpeed < 200)
+            {
+                if (gameSpeed % 20 == 0)
+                    randomCars.numbersOfCars += 1;
+            }
+            else if (gameSpeed < 210)
+            {
+                randomCars.numbersOfCars = 6;
+            }
+            if (gameSpeed < 300)
+            {
+                if (gameSpeed % 40 == 0)
+                    randomCars.numbersOfCars += 1;
+            }
+            else if (gameSpeed < 310)
+            {
+                randomCars.numbersOfCars = 4;
+            }
+            else if (gameSpeed < 500)
+            {
+                if (gameSpeed % 50 == 0)
+                    randomCars.numbersOfCars += 1;
+            }
+            else
+                randomCars.numbersOfCars = 6;
+
+            NumberOfCars = randomCars.numbersOfCars;
+        }
+
 
         /// <summary>
         /// Draw game
@@ -113,11 +146,8 @@ namespace TrafficGameCore
             var playersCar = PlayerSingleton.GetInstance().PlayersCar;
             foreach (Car car in randomCars.RandomCarsList)
             {
-                if ((playersCar.Pos.X + playersCar.HitBox.Width > car.Pos.X && playersCar.Pos.X < car.Pos.X + car.HitBox.Width)
-                   && (playersCar.Pos.Y + playersCar.HitBox.Lenght > car.Pos.Y && playersCar.Pos.Y < car.Pos.Y+ car.HitBox.Lenght))
-                {
+                if(playersCar.HitBox.IsCollided(car.HitBox)) 
                     collision = true;
-                }
             }
         }
 

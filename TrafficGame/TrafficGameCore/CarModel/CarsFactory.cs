@@ -23,18 +23,18 @@ namespace TrafficGameCore.CarModel
         {
             carsImages = new CarsImages(spriteSheet);
         }
-        internal Car CreateWhiteSlow() { return new Car(3* statisticsMultiplier, 8* statisticsMultiplier,(52,118), carsImages.CarsImagesArray[0]); }
-        internal Car CreateWhiteMedium() { return new Car(4* statisticsMultiplier, 10* statisticsMultiplier, (52, 132), carsImages.CarsImagesArray[1]); }
-        internal Car CreateWhiteFast() { return new Car(5* statisticsMultiplier, 10* statisticsMultiplier, (56, 134), carsImages.CarsImagesArray[3]); }
-        internal Car CreateWhitePickUp() { return new Car(3* statisticsMultiplier, 8* statisticsMultiplier, (60, 138), carsImages.CarsImagesArray[5]); }
-        internal Car CreateYellowTaxi() { return new Car(4* statisticsMultiplier, 10* statisticsMultiplier, (52, 118), carsImages.CarsImagesArray[2]); }
-        internal Car CreateWhiteTaxi() { return new Car(4* statisticsMultiplier, 10* statisticsMultiplier, (56, 132), carsImages.CarsImagesArray[4]); }
-        internal Car CreateBlackFast() { return new Car(6* statisticsMultiplier, 11* statisticsMultiplier, (56, 130), carsImages.CarsImagesArray[6]); }
-        internal Car CreateRedPickUp() { return new Car(3* statisticsMultiplier, 9* statisticsMultiplier, (54, 138), carsImages.CarsImagesArray[7]); }
-        internal Car CreateAmbulance() { return new Car(5* statisticsMultiplier, 9* statisticsMultiplier, (56, 142), carsImages.CarsImagesArray[8]); }
-        internal Car CreatePoliceCarBlue() { return new Car(4* statisticsMultiplier, 9* statisticsMultiplier, (54, 128), carsImages.CarsImagesArray[9]); }
-        internal Car CreatePoliceCarBlack() { return new Car(5* statisticsMultiplier, 9* statisticsMultiplier, (54, 128), carsImages.CarsImagesArray[10]); }
-        internal Car CreatePoliceCarSecret() { return new Car(6* statisticsMultiplier, 11* statisticsMultiplier, (58, 128), carsImages.CarsImagesArray[11]); }
+        internal Car CreateWhiteSlow() { return new Car(3* statisticsMultiplier, 8* statisticsMultiplier,(52,118),20, carsImages.CarsImagesArray[0]); }
+        internal Car CreateWhiteMedium() { return new Car(4* statisticsMultiplier, 10* statisticsMultiplier, (52, 132),20,carsImages.CarsImagesArray[1]); }
+        internal Car CreateWhiteFast() { return new Car(5* statisticsMultiplier, 10* statisticsMultiplier, (56, 134),20, carsImages.CarsImagesArray[3]); }
+        internal Car CreateWhitePickUp() { return new Car(3* statisticsMultiplier, 8* statisticsMultiplier, (60, 138),15, carsImages.CarsImagesArray[5]); }
+        internal Car CreateYellowTaxi() { return new Car(4* statisticsMultiplier, 10* statisticsMultiplier, (54, 126),15, carsImages.CarsImagesArray[2]); }
+        internal Car CreateWhiteTaxi() { return new Car(4* statisticsMultiplier, 10* statisticsMultiplier, (56, 132),20, carsImages.CarsImagesArray[4]); }
+        internal Car CreateBlackFast() { return new Car(6* statisticsMultiplier, 11* statisticsMultiplier, (56, 134),20, carsImages.CarsImagesArray[6]); }
+        internal Car CreateRedPickUp() { return new Car(3* statisticsMultiplier, 9* statisticsMultiplier, (54, 138),15, carsImages.CarsImagesArray[7]); }
+        internal Car CreateAmbulance() { return new Car(5* statisticsMultiplier, 9* statisticsMultiplier, (56, 142),15, carsImages.CarsImagesArray[8]); }
+        internal Car CreatePoliceCarBlue() { return new Car(4* statisticsMultiplier, 9* statisticsMultiplier, (54, 128),20, carsImages.CarsImagesArray[9]); }
+        internal Car CreatePoliceCarBlack() { return new Car(5* statisticsMultiplier, 9* statisticsMultiplier, (54, 128),20, carsImages.CarsImagesArray[10]); }
+        internal Car CreatePoliceCarSecret() { return new Car(6* statisticsMultiplier, 11* statisticsMultiplier, (58, 128),20, carsImages.CarsImagesArray[11]); }
 
         /// <summary>
         /// Method creating random car

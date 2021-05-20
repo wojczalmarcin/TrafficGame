@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using TrafficGameCore.HitBox;
 
 namespace TrafficGameCore.CarModel
 {
@@ -10,7 +11,7 @@ namespace TrafficGameCore.CarModel
     internal class Car
     {
         // Position
-        public (double X, double Y) Pos;
+        public Position Pos;
         // Speed ratio
         public int Speed { get; set; }
         // Image from sprite sheet
@@ -23,7 +24,7 @@ namespace TrafficGameCore.CarModel
         public Direction DrivingDirection { get; set; }
 
         // Hitbox
-        public (int Width, int Lenght) HitBox { get; set; }
+        public CarHitbox HitBox { get; set; }
 
         /// <summary>
         /// Constructor
@@ -31,12 +32,13 @@ namespace TrafficGameCore.CarModel
         /// <param name="speed"></param>
         /// <param name="carModel"></param>
         /// <param name="turningRate"></param>
-        public Car(int speed, int turningRate, (int width,int lenght) hitBox,Image carModel)
+        public Car(int speed, int turningRate, (int Width,int Lenght) size, int edgeRoundingDegree, Image carModel)
         {
             Speed = speed;
             TurningRate = turningRate;
             CarModel = carModel;
-            HitBox = hitBox;
+            Pos = new Position();
+            HitBox = new CarHitbox(Pos,size,edgeRoundingDegree,carModel);
         }
 
         /// <summary>
@@ -44,7 +46,8 @@ namespace TrafficGameCore.CarModel
         /// </summary>
         public Car()
         {
-            HitBox = (50, 140);
+            Pos = new Position();
+            HitBox = new CarHitbox(Pos,(50, 140),5, new Bitmap(50, 140));
         }
 
         /// <summary>
@@ -55,6 +58,7 @@ namespace TrafficGameCore.CarModel
         {
             var image = RotateImage(CarModel, Angle);
             g.DrawImage(image, new RectangleF((int)Pos.X, (int)Pos.Y, image.Width, image.Height));
+            //HitBox.Draw(g);
         }
 
         /// <summary>
