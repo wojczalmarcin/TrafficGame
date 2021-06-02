@@ -22,6 +22,9 @@ namespace TrafficGameCore.HitBox
         public (int Width, int Lenght) Size { get; set; }
 
         private (double X, double Y) posCorrection;
+
+        //kolor
+        public Color color { get; set; }
         /// <summary>
         /// Constructor
         /// </summary>
@@ -32,6 +35,7 @@ namespace TrafficGameCore.HitBox
             Pos = pos;
             Size = size;
             this.posCorrection = posCorrection;
+            color = Color.Yellow;
         }
         /// <summary>
         /// Method checking if there is collision with another rectangle
@@ -53,7 +57,7 @@ namespace TrafficGameCore.HitBox
         public void Draw(Graphics g)
         {
             (double X, double Y) pos = (Pos.X + posCorrection.X, Pos.Y + posCorrection.Y);
-            g.FillRectangle(new SolidBrush(Color.Yellow), new Rectangle((int)pos.X, (int)pos.Y, Size.Width, Size.Lenght));
+            g.FillRectangle(new SolidBrush(color), new Rectangle((int)pos.X, (int)pos.Y, Size.Width, Size.Lenght));
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,6 +37,13 @@ namespace TrafficGameCore.HitBox
                 } 
             }
             return false;
+        }
+        public void ChangeColor(Color color)
+        {
+            foreach (var thisRec in Rectangles)
+            {
+                thisRec.color = color;
+            }
         }
     }
 }

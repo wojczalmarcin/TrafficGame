@@ -12,8 +12,10 @@ namespace TrafficGameCore.CarModel
     {
         // Position
         public Position Pos;
+        // max speed ratio
+        public double MaxSpeed { get; set; }
         // Speed ratio
-        public int Speed { get; set; }
+        public double Speed { get; set; }
         // Image from sprite sheet
         private Image CarModel;
         // Turning rate
@@ -35,6 +37,7 @@ namespace TrafficGameCore.CarModel
         public Car(int speed, int turningRate, (int Width,int Lenght) size, int edgeRoundingDegree, Image carModel)
         {
             Speed = speed;
+            MaxSpeed = speed;
             TurningRate = turningRate;
             CarModel = carModel;
             Pos = new Position();
@@ -78,6 +81,26 @@ namespace TrafficGameCore.CarModel
             gfx.DrawImage(img, new Point(0, 0));
             gfx.Dispose();
             return bmp;
+        }
+        /// <summary>
+        /// Hamowanie
+        /// </summary>
+        public void Braking(double speedTarget)
+        {
+            if (Speed > speedTarget)
+                Speed /= 1.05;
+            HitBox.ChangeColor(Color.Red);
+        }
+        /// <summary>
+        /// Przyspieszanie
+        /// </summary>
+        public void Accelerating()
+        {
+            if (Speed < MaxSpeed)
+                Speed *= 1.01;
+            else
+                Speed = MaxSpeed;
+            HitBox.ChangeColor(Color.Yellow);
         }
 
         /// <summary>

@@ -30,7 +30,7 @@ namespace TrafficGameCore.CarModel
         /// Method spawning cars on the specific lane
         /// </summary>
         /// <param name="carList"></param>
-        internal void SpawnRandomCar(List<Car> carList)
+        internal void SpawnRandomCar(List<Car> carList, double playerCarSpeed)
         {
             
             var freeLanes = StreetSingleton.GetInstance().WhichLanesAreFree(carList);
@@ -41,7 +41,7 @@ namespace TrafficGameCore.CarModel
                 randomPos = random.Next(freeLanes.Count);
                 Car newCar = carsFactory.CreateRandomCar(random);
                 newCar.Pos.X = (int)freeLanes[randomPos];
-                newCar.Pos.Y = -newCar.HitBox.Size.Lenght;
+                newCar.Pos.Y = -newCar.HitBox.Size.Lenght-50;
                 if(newCar.Pos.X == (int)Lane.First || newCar.Pos.X == (int)Lane.Second || newCar.Pos.X == (int)Lane.Third)
                 {
                     newCar.DrivingDirection = Car.Direction.Bottom;
@@ -52,7 +52,12 @@ namespace TrafficGameCore.CarModel
                     newCar.DrivingDirection = Car.Direction.Top;
                     newCar.Angle = 0;
                 }
-
+                if (newCar.MaxSpeed >= playerCarSpeed)
+                {
+                    newCar.MaxSpeed/=20;
+                    newCar.Speed = newCar.MaxSpeed;
+                }
+                    
                 carList.Add(newCar);
             }
 

@@ -56,11 +56,11 @@ namespace TrafficGameCore.CarModel
         {
             var carsToRemove = new List<Car>();
             if (RandomCarsList.Count < numbersOfCars)
-                randomCarSpawner.SpawnRandomCar(RandomCarsList);
+                randomCarSpawner.SpawnRandomCar(RandomCarsList, gameSpeed * gameTimeElapsed);
             foreach (var car in RandomCarsList)
             {
                 carBot.DriveCar(car, gameSpeed, gameTimeElapsed);
-                if (car.Pos.Y > StreetSingleton.GetInstance().Lenght || car.Pos.Y < -200)
+                if (car.Pos.Y > StreetSingleton.GetInstance().Lenght || car.Pos.Y < -400)
                     carsToRemove.Add(car);
             }
             foreach(var car in carsToRemove)
