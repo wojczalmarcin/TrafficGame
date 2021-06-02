@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TrafficGameCore.CarModel;
-
+using TrafficGameCore.HitBox;
 
 namespace TrafficGameCore
 {
@@ -15,6 +15,25 @@ namespace TrafficGameCore
     /// </summary>
     public class StreetSingleton
     {
+        internal class TireTrack
+        {
+            private CarHitbox _carHitBox;
+            internal TireTrack(CarHitbox carHitBox)
+            {
+                _carHitBox = carHitBox;
+                Pos = new Position(carHitBox.Rectangles[0].Pos.X + carHitBox.Rectangles[0].PosCorrection.X, carHitBox.Rectangles[0].Pos.Y+50);
+            }
+            public Position Pos { get; set; }
+            public double Lenght { get; set; }
+            private Color color = Color.Black;
+            
+            public void Draw(Graphics g)
+            {
+                g.FillRectangle(new SolidBrush(color), new Rectangle((int)Pos.X+3, (int)Pos.Y, 6, 2));
+                g.FillRectangle(new SolidBrush(color), new Rectangle((int)Pos.X-3+ _carHitBox.Size.Width, (int)Pos.Y, 6, 2));
+            }
+        }
+
         // Singleton instance
         private static StreetSingleton _instance;
 
@@ -33,6 +52,9 @@ namespace TrafficGameCore
         // Image of the street
         public Image StreetImage { get; set; }
 
+        // List of tire tracks
+        internal List<TireTrack> TireTracks { get; set; }
+
 
         /// <summary>
         /// Constructor
@@ -43,6 +65,7 @@ namespace TrafficGameCore
             Width = 700;
             Lenght = 800;
             SidewalkWidth = 60;
+            TireTracks = new List<TireTrack>();
         }
         /// <summary>
         /// Method returning instance of street object
@@ -117,7 +140,24 @@ namespace TrafficGameCore
 
             return freeLanes;
         }
-
+        private void RemoveTireTracks()
+        {
+            var tracksToRemove = new List<TireTrack>();
+            foreach(var tireTrack in TireTracks)
+            {
+                if (tireTrack.Pos.Y > 1024)
+                    tracksToRemove.Add(tireTrack);
+            }
+            foreach(var track in tracksToRemove)
+            {
+                TireTracks.Remove(track);
+            }
+        }
+        private void MoveTireTracks(int y)
+        {
+            foreach (var tireTrack in TireTracks)
+                tireTrack.Pos.Y += y;
+        }
         /// <summary>
         /// Function moving street
         /// </summary>
@@ -127,6 +167,8 @@ namespace TrafficGameCore
             PosY += (int)(gameSpeed*gameTimeElapsed);
             if (PosY >= 1024)
                 PosY = 0;
+            RemoveTireTracks();
+            MoveTireTracks((int)(gameSpeed * gameTimeElapsed));
         }
 
         /// <summary>
@@ -137,6 +179,8 @@ namespace TrafficGameCore
         {
             g.DrawImage(StreetImage, new RectangleF(0, (int)PosY, Properties.Resources.street.Width, Properties.Resources.street.Height));
             g.DrawImage(StreetImage, new RectangleF(0, (int)PosY - Properties.Resources.street.Height, Properties.Resources.street.Width, Properties.Resources.street.Height));
+            foreach (var tireTrack in TireTracks)
+                tireTrack.Draw(g);
         }
     }
 }

@@ -29,7 +29,8 @@ namespace TrafficGameCore.CarModel
 
             if (AvoidPlayer(car))
             {
-                car.Braking(1);
+                car.Braking(0);
+                StreetSingleton.GetInstance().TireTracks.Add(new TireTrack(car.HitBox));
             }
             else
             {

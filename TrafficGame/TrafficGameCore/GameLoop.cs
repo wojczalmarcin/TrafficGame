@@ -68,8 +68,8 @@ namespace TrafficGameCore
         private void Tick(double gameTimeElapsed)
         {
             if(gameSpeed<maxGameSpeed)
-                //this must be precised hex number
-                gameSpeed += 0.125;
+                //this must be precised hex number and must sum exacly to 1
+                gameSpeed += 0.0625;
             CarSpawnInterval();
 
             StreetSingleton.GetInstance().Tick(gameSpeed, gameTimeElapsed);
@@ -86,7 +86,7 @@ namespace TrafficGameCore
         {
             if (gameSpeed < 200)
             {
-                if (gameSpeed % 20 == 0)
+                if (gameSpeed % 30 == 0)
                     randomCars.numbersOfCars += 1;
             }
             else if (gameSpeed < 210)
@@ -95,7 +95,7 @@ namespace TrafficGameCore
             }
             if (gameSpeed < 300)
             {
-                if (gameSpeed % 40 == 0)
+                if (gameSpeed % 50 == 0)
                     randomCars.numbersOfCars += 1;
             }
             else if (gameSpeed < 310)
@@ -104,7 +104,7 @@ namespace TrafficGameCore
             }
             else if (gameSpeed < 500)
             {
-                if (gameSpeed % 50 == 0)
+                if (gameSpeed % 60 == 0)
                     randomCars.numbersOfCars += 1;
             }
             else
@@ -133,7 +133,7 @@ namespace TrafficGameCore
             spriteSheet = Properties.Resources.cars;
             randomCars = new RandomCars(spriteSheet);
             randomCars.RandomCarsList.Clear();
-            randomCars.numbersOfCars = 1;
+            randomCars.numbersOfCars = 3;
             StreetSingleton.GetInstance().StreetImage = Properties.Resources.street;
             collision = false;
         }

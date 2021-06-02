@@ -21,7 +21,7 @@ namespace TrafficGameCore.HitBox
         // Rectangle size
         public (int Width, int Lenght) Size { get; set; }
 
-        private (double X, double Y) posCorrection;
+        public (double X, double Y) PosCorrection {get;set;}
 
         //kolor
         public Color color { get; set; }
@@ -34,7 +34,7 @@ namespace TrafficGameCore.HitBox
         {
             Pos = pos;
             Size = size;
-            this.posCorrection = posCorrection;
+            this.PosCorrection = posCorrection;
             color = Color.Yellow;
         }
         /// <summary>
@@ -44,8 +44,8 @@ namespace TrafficGameCore.HitBox
         /// <returns></returns>
         public bool IsCollided(HitboxRectangle rectangle)
         {
-            (double X, double Y) thisRecPos = (Pos.X + posCorrection.X, Pos.Y + posCorrection.Y);
-            (double X, double Y) recPos = (rectangle.Pos.X + rectangle.posCorrection.X, rectangle.Pos.Y + rectangle.posCorrection.Y);
+            (double X, double Y) thisRecPos = (Pos.X + PosCorrection.X, Pos.Y + PosCorrection.Y);
+            (double X, double Y) recPos = (rectangle.Pos.X + rectangle.PosCorrection.X, rectangle.Pos.Y + rectangle.PosCorrection.Y);
 
             if ((thisRecPos.X + Size.Width > recPos.X && thisRecPos.X < recPos.X + rectangle.Size.Width)
                 && (thisRecPos.Y + Size.Lenght > recPos.Y && thisRecPos.Y < recPos.Y + rectangle.Size.Lenght))
@@ -56,7 +56,7 @@ namespace TrafficGameCore.HitBox
 
         public void Draw(Graphics g)
         {
-            (double X, double Y) pos = (Pos.X + posCorrection.X, Pos.Y + posCorrection.Y);
+            (double X, double Y) pos = (Pos.X + PosCorrection.X, Pos.Y + PosCorrection.Y);
             g.FillRectangle(new SolidBrush(color), new Rectangle((int)pos.X, (int)pos.Y, Size.Width, Size.Lenght));
         }
     }
