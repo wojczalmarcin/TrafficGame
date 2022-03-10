@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 using TrafficGameCore;
 
@@ -31,6 +32,7 @@ namespace TrafficGameForms
 
         private void GraphicsTimer_Tick(object sender, EventArgs e)
         {
+            var watch = Stopwatch.StartNew();
             pictureBoxGraphics.Refresh();
             labelDebugger.Text = "Threads:\n" + gameLoop.threads +"\nGameSpeed:\n"+ (int)gameLoop.gameSpeed
                 + "\nCarsNumber:\n" + gameLoop.NumberOfCars;

@@ -18,7 +18,6 @@ namespace TrafficGameCore
         public CarsImages(Image spriteSheet)
         {
             CarsImagesArray = new Image[12];
-            var img = spriteSheet;
             for (int i = 0; i < 12; i++)
             {
                 CarsImagesArray[i] = new Bitmap(70, 145);
@@ -30,7 +29,7 @@ namespace TrafficGameCore
                     srcY = 145;
                 else
                     srcY = 290;
-                graphics.DrawImage(img, new Rectangle(0, 0, 70, 145), new Rectangle((i % 4) * 70, srcY, 70, 145), GraphicsUnit.Pixel);
+                graphics.DrawImage(spriteSheet, new Rectangle(0, 0, 70, 145), new Rectangle((i % 4) * 70, srcY, 70, 145), GraphicsUnit.Pixel);
                 graphics.Dispose();
             }
         }

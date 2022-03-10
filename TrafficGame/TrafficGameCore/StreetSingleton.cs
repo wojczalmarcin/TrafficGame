@@ -30,7 +30,7 @@ namespace TrafficGameCore
             public void Draw(Graphics g)
             {
                 g.FillRectangle(new SolidBrush(color), new Rectangle((int)Pos.X+3, (int)Pos.Y, 6, 2));
-                g.FillRectangle(new SolidBrush(color), new Rectangle((int)Pos.X-3+ _carHitBox.Size.Width, (int)Pos.Y, 6, 2));
+                g.FillRectangle(new SolidBrush(color), new Rectangle((int)Pos.X-6+ _carHitBox.Size.Width, (int)Pos.Y, 6, 2));
             }
         }
 

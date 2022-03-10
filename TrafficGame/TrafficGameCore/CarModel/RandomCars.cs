@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 [assembly: InternalsVisibleToAttribute("TrafficGameNUnitTest")]
@@ -57,12 +58,12 @@ namespace TrafficGameCore.CarModel
             var carsToRemove = new List<Car>();
             if (RandomCarsList.Count < numbersOfCars)
                 randomCarSpawner.SpawnRandomCar(RandomCarsList, gameSpeed * gameTimeElapsed);
-            foreach (var car in RandomCarsList)
+            Parallel.ForEach(RandomCarsList, car =>
             {
-                carBot.DriveCar(car, gameSpeed, gameTimeElapsed);
-                if (car.Pos.Y > StreetSingleton.GetInstance().Lenght || car.Pos.Y < -400)
-                    carsToRemove.Add(car);
-            }
+                 carBot.DriveCar(car, gameSpeed, gameTimeElapsed);
+                 if (car.Pos.Y > StreetSingleton.GetInstance().Lenght || car.Pos.Y < -400)
+                     carsToRemove.Add(car);
+            });
             foreach(var car in carsToRemove)
             {
                 RandomCarsList.Remove(car);

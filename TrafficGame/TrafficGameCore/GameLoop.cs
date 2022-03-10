@@ -72,10 +72,13 @@ namespace TrafficGameCore
                 gameSpeed += 0.0625;
             CarSpawnInterval();
 
-            StreetSingleton.GetInstance().Tick(gameSpeed, gameTimeElapsed);
-            PlayerSingleton.GetInstance().Tick(gameTimeElapsed, gameSpeed * gameTimeElapsed);
+            var taskStreet = Task.Factory.StartNew(()=>StreetSingleton.GetInstance().Tick(gameSpeed, gameTimeElapsed));
+            var taskPlayer = Task.Factory.StartNew(() => PlayerSingleton.GetInstance().Tick(gameTimeElapsed, gameSpeed * gameTimeElapsed));
+            Task.WaitAll(taskStreet, taskPlayer);
             randomCars.MoveRandomCars(gameSpeed, gameTimeElapsed);
-            detectCollision();
+            
+
+            DetectCollision();
             if (collision)
                 Stop();
 
@@ -141,7 +144,7 @@ namespace TrafficGameCore
         /// <summary>
         /// Funkcja wykrywająca kolizje samochodu gracza z losowymi samochodami
         /// </summary>
-        private void detectCollision()
+        private void DetectCollision()
         {
             var playersCar = PlayerSingleton.GetInstance().PlayersCar;
             foreach (Car car in randomCars.RandomCarsList)
